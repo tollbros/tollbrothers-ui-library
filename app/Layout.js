@@ -4,7 +4,7 @@ import Moon from '@geist-ui/icons/moon'
 import useLocalStorage from '../hooks/useLocalStorage'
 import styles from './Layout.module.scss'
 import { useEffect, useState } from 'react'
-import Github from '@geist-ui/icons/Github'
+import Github from '@geist-ui/icons/github'
 
 const Layout = ({ children, breadcrumbs = null }) => {
 	const [isLoading, setIsLoading] = useState(true)
