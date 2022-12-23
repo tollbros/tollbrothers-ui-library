@@ -1,0 +1,11 @@
+.layout {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.layout.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s, visibility 0.3s;
+}
