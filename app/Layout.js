@@ -1,9 +1,10 @@
-import { Breadcrumbs, Button, GeistProvider, CssBaseline, Grid, Page } from '@geist-ui/core'
+import { Breadcrumbs, Button, GeistProvider, CssBaseline, Grid, Page, Spacer } from '@geist-ui/core'
 import Sun from '@geist-ui/icons/sun'
 import Moon from '@geist-ui/icons/moon'
 import useLocalStorage from '../hooks/useLocalStorage'
 import styles from './Layout.module.scss'
 import { useEffect, useState } from 'react'
+import Github from '@geist-ui/icons/Github'
 
 const Layout = ({ children, breadcrumbs = null }) => {
 	const [isLoading, setIsLoading] = useState(true)
@@ -21,13 +22,27 @@ const Layout = ({ children, breadcrumbs = null }) => {
 			<Page dotBackdrop className={`${styles.layout} ${isLoading ? '' : styles.visible}`}>
 				<Page.Header>
 					<Grid.Container justify="space-between">
-						<Breadcrumbs>
-							<Breadcrumbs.Item href="/">Tollbrothers UI Library</Breadcrumbs.Item>
-							{breadcrumbs && breadcrumbs.map((breadcrumb, index) => <Breadcrumbs.Item
-								key={`breadcrumb-${index}`}>{breadcrumb}</Breadcrumbs.Item>)}
-						</Breadcrumbs>
-						<Button ghost scale={2 / 3} onClick={switchThemes} width="auto"
-										icon={themeType === 'dark' ? <Sun/> : <Moon/>}/>
+						<Grid xs={24}><Spacer/></Grid>
+						<Grid>
+							<Breadcrumbs>
+								<Breadcrumbs.Item href="/">Tollbrothers UI Library</Breadcrumbs.Item>
+								{breadcrumbs && breadcrumbs.map((breadcrumb, index) => <Breadcrumbs.Item
+									key={`breadcrumb-${index}`}>{breadcrumb}</Breadcrumbs.Item>)}
+							</Breadcrumbs>
+						</Grid>
+						<Grid>
+							<Grid.Container gap={1}>
+								<Grid>
+									<Button onClick={() => window.open('https://github.com/tollbros/tollbrothers-ui', '_ blank')}
+													scale={2 / 3} width="auto"
+													icon={<Github/>}/>
+								</Grid>
+								<Grid>
+									<Button scale={2 / 3} onClick={switchThemes} width="auto"
+													icon={themeType === 'dark' ? <Sun/> : <Moon/>}/>
+								</Grid>
+							</Grid.Container>
+						</Grid>
 					</Grid.Container>
 				</Page.Header>
 				<Page.Content>

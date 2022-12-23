@@ -1,7 +1,6 @@
-import { useState } from 'react'
-import { Button, Grid, Radio, Text } from '@geist-ui/core'
+import { useEffect, useState } from 'react'
+import { Card, Grid, Text } from '@geist-ui/core'
 import { FullScreenGallery } from '@tollbrothers/tollbrothers-ui'
-import useLocalStorage from '../hooks/useLocalStorage'
 
 export default function FullScreenGalleryTest () {
 	const [isOpen, setIsOpen] = useState(false)
@@ -70,20 +69,34 @@ export default function FullScreenGalleryTest () {
 			'url': 'https://cdn.tollbrothers.com/communities/14341/images-resized/iStock-641316176_1920.jpg'
 		}
 	]
-	const [initialSlide, setInitialSlide] = useLocalStorage('FullScreenGallery-initialSlide', 0)
-
+	const [initialSlide, setInitialSlide] = useState(1)
+	useEffect(() => {
+		console.log('initialSlide', initialSlide)
+	}, [initialSlide])
 	return (
-		<Grid.Container direction="column" gap={1}>
-			<Grid>
+		<Grid.Container gap={1}>
+			<Grid xs={24}>
 				<Text h1>FullScreenGallery</Text>
-				<Button scale={2/3} width="auto" onClick={() => setIsOpen(true)}>Show</Button>
-				<Text h2>Initial slide</Text>
-				<Radio.Group initialValue={initialSlide} onChange={(value) => setInitialSlide(value)} placeholder="Initial index">
-					{mediaList.map((item, index) => {
-						return <Radio key={`option-${index}`} value={index}>Slide {1 + index}</Radio>
-					})}
-				</Radio.Group>
 			</Grid>
+
+			{mediaList.map((item, index) => {
+				const slide = 1 + index
+				const cardHandler = () => {
+					setInitialSlide(slide)
+					setIsOpen(true)
+				}
+				return (
+					<Grid xs={6}>
+						<Card onClick={cardHandler}>
+							<Card.Content>
+								<img width={200} src={item.url}/>
+							</Card.Content>
+							<Card.Footer>Slide {slide}</Card.Footer>
+						</Card>
+					</Grid>
+				)
+			})}
+
 			<Grid>
 				<FullScreenGallery initialSlide={initialSlide} onClose={() => setIsOpen(false)} show={isOpen}
 													 mediaList={mediaList}/>

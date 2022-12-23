@@ -22,13 +22,15 @@ export default function HeroComponentTest () {
 		}
 	]
 	return (
-		<Grid.Container direction="column" gap={1}>
-			<Grid>
+		<Grid.Container gap={1}>
+			<Grid xs={12}>
 				<Text h1>HeroComponent</Text>
+			</Grid>
+			<Grid xs={12}>
 				<Button scale={2/3} width="auto" onClick={() => setIsDarkness((prevState) => !prevState)}>Turn
 					darkness {isDarkness ? 'off' : 'on'}</Button>
 			</Grid>
-			<Grid>
+			<Grid xs={24}>
 				<HeroComponent slides={slides} darkness={isDarkness}/>
 			</Grid>
 		</Grid.Container>
