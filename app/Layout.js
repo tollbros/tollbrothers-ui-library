@@ -19,7 +19,7 @@ const Layout = ({ children, breadcrumbs = null }) => {
 	return (
 		<GeistProvider themeType={themeType}>
 			<CssBaseline/>
-			<Page dotBackdrop className={`${styles.layout} ${isLoading ? '' : styles.visible}`}>
+			<Page dotBackdrop className={`${styles.layout} ${isLoading ? '' : styles.visible} margin`}>
 				<Page.Header>
 					<Grid.Container justify="space-between">
 						<Grid xs={24}><Spacer/></Grid>

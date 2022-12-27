@@ -76,7 +76,7 @@ export default function FullScreenGalleryTest () {
 	return (
 		<Grid.Container gap={1}>
 			<Grid xs={24}>
-				<Text h1>FullScreenGallery</Text>
+				<Text h2>FullScreenGallery</Text>
 			</Grid>
 
 			{mediaList.map((item, index) => {
@@ -86,7 +86,7 @@ export default function FullScreenGalleryTest () {
 					setIsOpen(true)
 				}
 				return (
-					<Grid xs={6}>
+					<Grid xs={24} md={12} lg={6}>
 						<Card onClick={cardHandler}>
 							<Card.Content>
 								<img width={200} src={item.url}/>

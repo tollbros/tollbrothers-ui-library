@@ -31,14 +31,14 @@ export default function Home ({ showcase = [] }) {
 	}, [currentComponentIndex, showcase])
 	return (
 		<Grid.Container gap={1}>
-			<Grid xs={4}>
-				<ButtonGroup vertical>
+			<Grid xs={24}>
+				<ButtonGroup>
 					{showcase.map((component, index) => {
 						return <Button key={`button-${index}`} onClick={() => setCurrentComponentIndex(index)}>{component}</Button>
 					})}
 				</ButtonGroup>
 			</Grid>
-			<Grid xs={20}>
+			<Grid xs={24}>
 				<DynamicComponent/>
 			</Grid>
 		</Grid.Container>

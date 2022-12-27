@@ -24,7 +24,7 @@ export default function HeroComponentTest () {
 	return (
 		<Grid.Container gap={1}>
 			<Grid xs={12}>
-				<Text h1>HeroComponent</Text>
+				<Text h2>HeroComponent</Text>
 			</Grid>
 			<Grid xs={12}>
 				<Button scale={2/3} width="auto" onClick={() => setIsDarkness((prevState) => !prevState)}>Turn
