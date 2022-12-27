@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { Card, Grid, Text } from '@geist-ui/core'
+import { useState } from 'react'
+import { Card, Grid } from '@geist-ui/core'
 import { FullScreenGallery } from '@tollbrothers/tollbrothers-ui'
 
 export default function FullScreenGalleryTest () {
@@ -70,15 +70,9 @@ export default function FullScreenGalleryTest () {
 		}
 	]
 	const [initialSlide, setInitialSlide] = useState(1)
-	useEffect(() => {
-		console.log('initialSlide', initialSlide)
-	}, [initialSlide])
+
 	return (
 		<Grid.Container gap={1}>
-			<Grid xs={24}>
-				<Text h2>FullScreenGallery</Text>
-			</Grid>
-
 			{mediaList.map((item, index) => {
 				const slide = 1 + index
 				const cardHandler = () => {
@@ -86,10 +80,10 @@ export default function FullScreenGalleryTest () {
 					setIsOpen(true)
 				}
 				return (
-					<Grid xs={24} md={12} lg={6}>
+					<Grid key={`card-container-${index}`} xs={24} md={12} lg={6}>
 						<Card onClick={cardHandler}>
 							<Card.Content>
-								<img width={200} src={item.url}/>
+								<img alt={`Slide ${slide}`} width={200} src={item.url}/>
 							</Card.Content>
 							<Card.Footer>Slide {slide}</Card.Footer>
 						</Card>

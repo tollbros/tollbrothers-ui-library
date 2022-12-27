@@ -5,8 +5,9 @@ import useLocalStorage from '../hooks/useLocalStorage'
 import styles from './Layout.module.scss'
 import { useEffect, useState } from 'react'
 import Github from '@geist-ui/icons/github'
+import Menu from '@geist-ui/icons/menu'
 
-const Layout = ({ children, breadcrumbs = null }) => {
+const Layout = ({ children, breadcrumbs = null, isLibraryVisible, setIsLibraryVisible }) => {
 	const [isLoading, setIsLoading] = useState(true)
 	const [themeType, setThemeType] = useLocalStorage('themeType', 'light')
 	const switchThemes = () => {
@@ -19,11 +20,16 @@ const Layout = ({ children, breadcrumbs = null }) => {
 	return (
 		<GeistProvider themeType={themeType}>
 			<CssBaseline/>
-			<Page dotBackdrop className={`${styles.layout} ${isLoading ? '' : styles.visible} margin`}>
+			<Page dotBackdrop className={`${styles.layout} ${isLoading ? '' : styles.visible}`}>
 				<Page.Header>
 					<Grid.Container justify="space-between">
 						<Grid xs={24}><Spacer/></Grid>
 						<Grid>
+							<Button type={isLibraryVisible ? 'secondary-light' : 'default'}
+											onClick={() => setIsLibraryVisible((prevLibNav) => !prevLibNav)}
+											scale={2 / 3} width="auto"
+											icon={<Menu/>}/>
+							<Spacer/>
 							<Breadcrumbs>
 								<Breadcrumbs.Item href="/">Tollbrothers UI Library</Breadcrumbs.Item>
 								{breadcrumbs && breadcrumbs.map((breadcrumb, index) => <Breadcrumbs.Item

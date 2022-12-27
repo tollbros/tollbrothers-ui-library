@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Grid, Button, Text } from '@geist-ui/core'
+import { Grid, Button } from '@geist-ui/core'
 import { HeroComponent } from '@tollbrothers/tollbrothers-ui'
 
 export default function HeroComponentTest () {
@@ -23,10 +23,7 @@ export default function HeroComponentTest () {
 	]
 	return (
 		<Grid.Container gap={1}>
-			<Grid xs={12}>
-				<Text h2>HeroComponent</Text>
-			</Grid>
-			<Grid xs={12}>
+			<Grid xs={24}>
 				<Button scale={2/3} width="auto" onClick={() => setIsDarkness((prevState) => !prevState)}>Turn
 					darkness {isDarkness ? 'off' : 'on'}</Button>
 			</Grid>

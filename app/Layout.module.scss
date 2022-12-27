@@ -10,8 +10,4 @@ section.layout.visible {
   opacity: 1;
   transition: opacity 0.3s, visibility 0.3s;
   margin: 0;
-
-  @media (min-width: 1200px) {
-    margin: 0 auto;
-  }
 }
