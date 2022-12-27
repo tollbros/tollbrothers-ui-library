@@ -1,67 +1,41 @@
-import { Button, Grid, Text } from '@geist-ui/core'
-import dynamicURLFetch from '../lib/dynamicURLFetch'
-import dynamic from 'next/dynamic'
-import { useMemo, useState } from 'react'
+import { Card, Grid, Text } from '@geist-ui/core'
+import Package from '@geist-ui/icons/package'
 import styles from './index.module.scss'
+import { useRouter } from 'next/router'
 
-async function getShowcase (req) {
-	const res = await dynamicURLFetch({
-		req,
-		path: `/api/showcase`
-	})
-	return res.json()
-}
-
-export const getServerSideProps = async ({ req }) => {
-	const { showcase } = await getShowcase(req)
-	return {
-		props: {
-			showcase
-		}
-	}
-}
-
-const getDynamicComponent = (name) => dynamic(() => import(`../showcase/${name}`), {
-	ssr: false,
-})
-
-export default function Home ({ showcase = [], isLibraryVisible }) {
-	const [currentComponentIndex, setCurrentComponentIndex] = useState(0)
-	const DynamicComponent = useMemo(() => {
-		return getDynamicComponent(showcase[currentComponentIndex])
-	}, [currentComponentIndex, showcase])
+export default function Home () {
+	const router = useRouter()
 
 	return (
-		<Grid.Container gap={1}>
-			{isLibraryVisible && <Grid className={`${isLibraryVisible ? styles.visible : styles.library}`} xs={24} lg={4}>
-				<aside>
-					<div content={styles.content}>
-						<Grid.Container gap={1}>
-							{showcase.map((component, index) => {
-								return (
-									<Grid xs={24} key={`button-${index}`}>
-										<Button
-											className={styles.button}
-											type={currentComponentIndex === index ? 'secondary-light': 'abort'}
-											scale={1 / 2}
-											onClick={() => setCurrentComponentIndex(index)}>
-											{component.split('.js')[0]}
-										</Button>
-									</Grid>)
-							})}
-						</Grid.Container>
-					</div>
-				</aside>
-			</Grid>}
-			<Grid xs={24} lg={isLibraryVisible ? 20 : 24}>
-				<Grid.Container gap={1}>
-					<Grid xs={24}>
-				<Text h2>{showcase[currentComponentIndex].split('.js')[0]}</Text>
+		<Grid.Container height="100vh" justify="center" gap={1}>
+			<Grid xs={24}>
+				<Grid.Container alignContent="flex-start">
+					<Grid xs={24} justify="center"><Text h1>Toll Brothers</Text></Grid>
+					<Grid xs={24} justify="center">
+						<Text p b>Design system</Text>
 					</Grid>
-						<Grid xs={24}>
-				<DynamicComponent/>
-						</Grid>
 				</Grid.Container>
+			</Grid>
+
+			<Grid height='164px' xs={24} lg={4}>
+				<Card type="secondary" className={styles.card} onClick={() => router.push('/components/fullscreengallery')}>
+					<Grid.Container justify="start" gap={1}>
+						<Grid>
+							<Package/>
+						</Grid>
+						<Grid>
+							<Text h4>Components</Text>
+						</Grid>
+						<Grid xs={24}>
+							<Text p b>A React component library built on top of NextJs</Text>
+						</Grid>
+					</Grid.Container>
+					<Grid.Container>
+						<Grid>
+
+						</Grid>
+					</Grid.Container>
+				</Card>
 			</Grid>
 		</Grid.Container>
 	)
