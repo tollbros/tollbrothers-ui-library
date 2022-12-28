@@ -1,9 +1,16 @@
 import { useState } from 'react'
-import { Card, Grid } from '@geist-ui/core'
+import { Card, Grid, Text } from '@geist-ui/core'
 import { FullScreenGallery } from '@tollbrothers/tollbrothers-ui'
 
 export default function FullScreenGalleryTest () {
 	const [isOpen, setIsOpen] = useState(false)
+	const walkthroughList = [
+		{
+			'link': 'pbGcUYerCwA',
+			'type': 'walkthrough::matterport',
+			'url': null
+		}
+	]
 	const mediaList = [
 		{
 			'description': null,
@@ -70,30 +77,54 @@ export default function FullScreenGalleryTest () {
 		}
 	]
 	const [initialSlide, setInitialSlide] = useState(1)
-
+	const [listToLaunch, setListToLaunch] = useState()
+	const walkthroughHandler = () => {
+		setInitialSlide(0)
+		setIsOpen(true)
+		setListToLaunch(walkthroughList)
+	}
 	return (
 		<Grid.Container gap={1}>
-			{mediaList.map((item, index) => {
-				const slide = 1 + index
-				const cardHandler = () => {
-					setInitialSlide(slide)
-					setIsOpen(true)
-				}
-				return (
-					<Grid key={`card-container-${index}`} xs={24} md={12} lg={6}>
-						<Card onClick={cardHandler}>
+			<Grid>
+				<Grid.Container gap={1}>
+					<Grid xs={24} md={12} lg={6}>
+						<Card style={{ cursor: 'pointer' }} width={100} onClick={walkthroughHandler}>
 							<Card.Content>
-								<img alt={`Slide ${slide}`} width={200} src={item.url}/>
+								<Text h3>Show 3D Walkthrough</Text>
 							</Card.Content>
-							<Card.Footer>Slide {slide}</Card.Footer>
 						</Card>
 					</Grid>
-				)
-			})}
-
+				</Grid.Container>
+			</Grid>
 			<Grid>
-				<FullScreenGallery initialSlide={initialSlide} onClose={() => setIsOpen(false)} show={isOpen}
-													 mediaList={mediaList}/>
+				<Card>
+					<Grid.Container gap={1}>
+						<Grid xs={24}><Text h3>Gallery</Text></Grid>
+						{mediaList.map((item, index) => {
+							const slide = 1 + index
+							const cardHandler = () => {
+								setInitialSlide(slide)
+								setIsOpen(true)
+								setListToLaunch(mediaList)
+							}
+							return (
+								<Grid key={`card-container-${index}`} xs={24} md={12} lg={6}>
+									<Card style={{ cursor: 'pointer' }} onClick={cardHandler}>
+										<Card.Content>
+											<img alt={`Slide ${slide}`} width={200} src={item.url}/>
+										</Card.Content>
+										<Card.Footer>Slide {slide}</Card.Footer>
+									</Card>
+								</Grid>
+							)
+						})}
+
+						<Grid>
+							<FullScreenGallery initialSlide={initialSlide} onClose={() => setIsOpen(false)} show={isOpen}
+																 mediaList={listToLaunch}/>
+						</Grid>
+					</Grid.Container>
+				</Card>
 			</Grid>
 		</Grid.Container>
 	)
