@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { Grid, Button } from '@geist-ui/core'
+import { Grid, Text, Slider } from '@geist-ui/core'
 import { HeroComponent } from '@tollbrothers/tollbrothers-ui'
 
 export default function HeroComponentTest () {
-	const [isDarkness, setIsDarkness] = useState(false)
+	const [opacity, setOpacity] = useState(false)
+	const handler = (val) => setOpacity(val)
 	const slides = [
 		{
 			image: 'https://cdn.tollbrothers.com/communities/14365/images-resized/5486-Enchanted-Rose-Street-Las-large-008-005-Kitchen-1500x1000-72dpi_1920.jpg',
@@ -24,11 +25,13 @@ export default function HeroComponentTest () {
 	return (
 		<Grid.Container gap={1}>
 			<Grid xs={24}>
-				<Button scale={2/3} width="auto" onClick={() => setIsDarkness((prevState) => !prevState)}>Turn
-					darkness {isDarkness ? 'off' : 'on'}</Button>
+				<Text h4>Overlay Opacity</Text>
 			</Grid>
 			<Grid xs={24}>
-				<HeroComponent slides={slides} darkness={isDarkness}/>
+				<Slider onChange={handler} step={0.1} max={1} min={0} value={opacity} showMarkers type="default" />
+			</Grid>
+			<Grid xs={24}>
+				<HeroComponent slides={slides} overlayOpacity={opacity}/>
 			</Grid>
 		</Grid.Container>
 	)

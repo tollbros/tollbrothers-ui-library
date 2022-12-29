@@ -120,7 +120,7 @@ export default function FullScreenGalleryTest () {
 						})}
 
 						<Grid>
-							<FullScreenGallery initialSlide={initialSlide} onClose={() => setIsOpen(false)} show={isOpen}
+							<FullScreenGallery onNext={({ slideIndex }) => console.log('slideIndex', slideIndex)} onPrevious={({ slideIndex }) => console.log('slideIndex', slideIndex)} initialSlide={initialSlide} onClose={() => setIsOpen(false)} show={isOpen}
 																 mediaList={listToLaunch}/>
 						</Grid>
 					</Grid.Container>
