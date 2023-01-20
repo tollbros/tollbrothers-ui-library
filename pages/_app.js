@@ -3,6 +3,7 @@ import 'blaze-slider/dist/blaze.css'
 import Layout from '../app/Layout'
 import { useState } from 'react'
 import getServerSideShowcase from '../lib/getServerSideShowcase'
+import { LoadingIndicator } from '@tollbrothers/tollbrothers-ui'
 
 export const getServerSideProps = getServerSideShowcase
 
@@ -19,6 +20,7 @@ export default function App ({ Component, pageProps, router }) {
 		<Layout currentShowcase={currentShowcase} currentComponentIndex={currentComponentIndex} breadcrumbs={breadcrumbs}
 						isLibraryVisible={isLibraryVisible} setIsLibraryVisible={setIsLibraryVisible}>
 			<Component currentComponent={currentComponent} isLibraryVisible={isLibraryVisible} {...pageProps} />
+			<LoadingIndicator/>
 		</Layout>
 	)
 }

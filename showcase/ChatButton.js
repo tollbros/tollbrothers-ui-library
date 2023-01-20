@@ -3,11 +3,12 @@ import { Grid, useInput, Input, Text, Button, Spacer, Badge, useToasts } from '@
 import { useMemo } from 'react'
 
 export default function ChatButtonTest () {
-	const DEFAULT_JDE = '8262'
-	const DEFAULT_ID = '5733q000000Na25'
-	const { state: id, reset: resetID, bindings: bindingsID } = useInput(DEFAULT_ID)
+	const DEFAULT_JDE = '3895'
+	const DEFAULT_ID = '5733q000000Na1q'
+	const { state: id, setState: setID, reset: resetID, bindings: bindingsID } = useInput(DEFAULT_ID)
 	const {
 		state: jde,
+		setState: setJDE,
 		reset: resetJde,
 		bindings: bindingsJde
 	} = useInput(DEFAULT_JDE)
@@ -25,6 +26,10 @@ export default function ChatButtonTest () {
 	const handleReset = () => {
 		resetID()
 		resetJde()
+	}
+	const handleClear = () => {
+		setID('')
+		setJDE('')
 	}
 
 	return (
@@ -60,6 +65,11 @@ export default function ChatButtonTest () {
 						</Badge>
 					</Grid>
 					<Grid xs={24}>
+						<Button onClick={handleClear} type="secondary-light">
+							Clear
+						</Button>
+					</Grid>
+					<Grid xs={24}>
 						<Button onClick={handleReset} type="secondary-light">
 							Reset
 						</Button>
@@ -72,5 +82,4 @@ export default function ChatButtonTest () {
 			</Grid>
 		</Grid.Container>
 	)
-
 }
