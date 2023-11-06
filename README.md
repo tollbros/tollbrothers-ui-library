@@ -12,3 +12,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Component Library
 You can start adding to the library by adding your component to the `showcase` directory.
+
+
+package.json 
+```
+"dependencies": {
+    ...
+    "@tollbrothers/tollbrothers-ui": "1.17.2",
+    "@tollbrothers/tollbrothers-ui": "file:../tollbrothers-ui", 
+  }
+```
