@@ -32,23 +32,6 @@ export default function DragSliderTest() {
 
             </aside>
 
-            {/* <aside className={`${styles.dragContainer} ${styles.wider}`}>
-                <h2>with state</h2>
-                <div>
-                <p>My Value: {myNumber}</p>
-                <DragSlider
-                    step={1000}
-                    minValue={10000}
-                    maxValue={1000000}
-                    initalNum={myNumber}
-                    setNumber={setMyNumber}
-                />
-                <div className={styles.minmax}>
-                    <span>min: {myMin}</span>
-                    <span>max: {myMax}</span>
-                </div>
-                </div>
-            </aside> */}
 
         </article>
 
