@@ -18,7 +18,7 @@ package.json
 ```
 "dependencies": {
     ...
-    "@tollbrothers/tollbrothers-ui": "1.17.2",
+    "@tollbrothers/tollbrothers-ui": "1.18.0",
     "@tollbrothers/tollbrothers-ui": "file:../tollbrothers-ui", 
   }
 ```
