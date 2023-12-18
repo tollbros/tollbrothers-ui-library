@@ -16,7 +16,7 @@ export default function DragSliderTest() {
             <aside className={styles.dragContainer}>
 
                 <div>
-                <p>My Value: {myNumber}</p>
+                    <p>My Value: {myNumber}</p>
                     <DragSlider
                        step={1000}
                        minValue={10000}
@@ -25,9 +25,9 @@ export default function DragSliderTest() {
                        setNumber={setMyNumber}
                     />
                     <div className={styles.minmax}>
-                    <span>min: {myMin}</span>
-                    <span>max: {myMax}</span>
-                </div>
+                        <span>min: {myMin}</span>
+                        <span>max: {myMax}</span>
+                    </div>
                 </div>
 
             </aside>
