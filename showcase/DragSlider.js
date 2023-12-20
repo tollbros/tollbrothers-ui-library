@@ -7,7 +7,6 @@ export default function DragSliderTest() {
     //const myNumber = 500000;
     const myMin = 10000;
     const myMax = 1000000;
-    //const step = 5000;
 
     return (
 
