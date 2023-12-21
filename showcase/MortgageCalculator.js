@@ -9,6 +9,7 @@ export default function MortgageCalculatorTest() {
     const [loanNumber, setLoanNumber] = useState(30);
     const [downPaymentNumber, setDownPaymentNumber] = useState(250000);
     const [interestNumber, setInterestNumber] = useState(3);
+    const [estimatedPayment, setEstimatedPayment] = useState(salesNumber);
     
     return (
 
@@ -30,7 +31,7 @@ export default function MortgageCalculatorTest() {
                           setLoanNumber={setLoanNumber}
                           loanCallOut={'Loan Term'}
                           downPaymentStep={1000}
-                          downPaymentMin={1000}
+                          downPaymentMin={0}
                           downPaymentMax={500000}
                           downPaymentNumber={downPaymentNumber}
                           setDownPaymentNumber={setDownPaymentNumber}
