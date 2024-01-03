@@ -1,13 +1,12 @@
 import { DragSlider } from '@tollbrothers/tollbrothers-ui'
 import { useState } from 'react'
-import styles from './dragSliderLayout.module.scss'
+import styles from '/styles/dragSliderLayout.module.scss'
 
 export default function DragSliderTest() {
     const [myNumber, setMyNumber] = useState(500000);
     //const myNumber = 500000;
     const myMin = 10000;
     const myMax = 1000000;
-    //const step = 5000;
 
     return (
 
@@ -16,7 +15,7 @@ export default function DragSliderTest() {
             <aside className={styles.dragContainer}>
 
                 <div>
-                <p>My Value: {myNumber}</p>
+                    <p>My Value: {myNumber}</p>
                     <DragSlider
                        step={1000}
                        minValue={10000}
@@ -25,9 +24,9 @@ export default function DragSliderTest() {
                        setNumber={setMyNumber}
                     />
                     <div className={styles.minmax}>
-                    <span>min: {myMin}</span>
-                    <span>max: {myMax}</span>
-                </div>
+                        <span>min: {myMin}</span>
+                        <span>max: {myMax}</span>
+                    </div>
                 </div>
 
             </aside>
