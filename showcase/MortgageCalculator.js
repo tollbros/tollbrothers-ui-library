@@ -2,7 +2,7 @@ import { MortgageCalculator } from '@tollbrothers/tollbrothers-ui'
 //import { DragSlider } from '@tollbrothers/tollbrothers-ui'
 
 import { useState } from 'react'
-import styles from './mortgageCalculatorLayout.module.scss'
+import styles from '/styles/mortgageCalculatorLayout.module.scss'
 
 export default function MortgageCalculatorTest() {
     const [salesNumber, setSalesNumber] = useState(500000);

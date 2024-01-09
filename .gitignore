@@ -105,5 +105,7 @@ dist
 .idea
 
 
+.orig
+*.orig
 
 .DS_Store

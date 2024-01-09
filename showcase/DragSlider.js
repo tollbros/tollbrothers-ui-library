@@ -1,6 +1,6 @@
 import { DragSlider } from '@tollbrothers/tollbrothers-ui'
 import { useState } from 'react'
-import styles from './dragSliderLayout.module.scss'
+import styles from '/styles/dragSliderLayout.module.scss'
 
 export default function DragSliderTest() {
     const [myNumber, setMyNumber] = useState(500000);
