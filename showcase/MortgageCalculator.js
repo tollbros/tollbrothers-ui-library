@@ -9,7 +9,12 @@ export default function MortgageCalculatorTest() {
     const [loanNumber, setLoanNumber] = useState(30);
     const [downPaymentNumber, setDownPaymentNumber] = useState(250000);
     const [interestNumber, setInterestNumber] = useState(3);
-    const [estimatedPayment, setEstimatedPayment] = useState(salesNumber);
+    const [monthlyPayment, setMonthlyPayment] = useState(null);
+    const [showCalcButton, setSshowCalcButton] = useState(true);
+    const [showAdvancedToggle, setShowAdvancedToggle] = useState(true); 
+    const [taxNumber, setTaxNumber] = useState(0); 
+    const [insuranceNumber, setInsuranceNumber] = useState(0);
+    const [hoaNumber, setHoaNumber] = useState(0);
     
     return (
 
@@ -37,12 +42,31 @@ export default function MortgageCalculatorTest() {
                           setDownPaymentNumber={setDownPaymentNumber}
                           downPaymentCallOut={'Down Payment'}
                           interestStep={.1}
-                          interestMin={3}
+                          interestMin={1}
                           interestMax={10}
                           interestNumber={interestNumber}
                           setInterestNumber={setInterestNumber}
                           interestCallOut={'Interest Rate'}
-                        
+                          taxesStep={100}
+                          taxesMin={0}
+                          taxesMax={1200}
+                          taxNumber={taxNumber}
+                          setTaxNumber={setTaxNumber}
+                          insuranceStep={100}
+                          insuranceMin={0}
+                          insuranceMax={1000}
+                          insuranceNumber={insuranceNumber}
+                          setInsuranceNumber={setInsuranceNumber}
+                          setMonthlyPayment={setMonthlyPayment}
+                          monthlyPayment={monthlyPayment}
+                          showAdvancedToggle={showAdvancedToggle}
+                          showCalcButton={showCalcButton}
+                          hoaStep={100}
+                          hoaMin={100}
+                          hoaMax={1000}
+                          hoaNumber={hoaNumber}
+                          setHoaNumber={setHoaNumber}
+                          
                     />
 
                   
