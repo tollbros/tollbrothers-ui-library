@@ -7,8 +7,8 @@ import styles from '/styles/mortgageCalculatorLayout.module.scss'
 export default function MortgageCalculatorTest() {
     const [salesNumber, setSalesNumber] = useState(500000);
     const [loanNumber, setLoanNumber] = useState(30);
-    const [downPaymentNumber, setDownPaymentNumber] = useState(250000);
-    const [interestNumber, setInterestNumber] = useState(3);
+    const [downPaymentNumber, setDownPaymentNumber] = useState(100000);
+    const [interestNumber, setInterestNumber] = useState(7);
     const [monthlyPayment, setMonthlyPayment] = useState(null);
     const [showCalcButton, setSshowCalcButton] = useState(true);
     const [showAdvancedToggle, setShowAdvancedToggle] = useState(true); 
